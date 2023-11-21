@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import java.util.Objects;
+
 public class MoveCounter implements Comparable<MoveCounter> {
 
     private int moveCount;
@@ -9,7 +11,7 @@ public class MoveCounter implements Comparable<MoveCounter> {
     }
 
     public boolean hasSameMoveCount(MoveCounter other) {
-        return this.moveCount == other.moveCount;
+        return this.equals(other);
     }
 
     @Override
@@ -17,10 +19,21 @@ public class MoveCounter implements Comparable<MoveCounter> {
         return other.moveCount - this.moveCount;
     }
 
-    @Override
-    public String toString() {
-        return "MoveCounter{" +
-                "moveCount=" + moveCount +
-                '}';
+    public int getMoveCount() {
+        return moveCount;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoveCounter that = (MoveCounter) o;
+        return moveCount == that.moveCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(moveCount);
+    }
+
 }
