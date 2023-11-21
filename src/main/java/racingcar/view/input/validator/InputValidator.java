@@ -1,7 +1,6 @@
 package racingcar.view.input.validator;
 
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
 public class InputValidator {
@@ -11,6 +10,11 @@ public class InputValidator {
     public void validateNumber(String input) {
         if (!NUMERIC_PATTERN.matcher(input).matches()) {
             throw new IllegalArgumentException(ValidationErrorMessage.NOT_NUMERIC_ERROR.getMessage());
+        }
+    }
+    public void validateNumber(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException(ValidationErrorMessage.NON_POSITIVE_NUMBER_ERROR.getMessage());
         }
     }
 

@@ -28,10 +28,17 @@ public class RaceGameInputView extends ConsoleRaceGameInput {
     @Override
     public int requestMoveAttempts() {
         System.out.println(RaceGameMessage.MOVE_ATTEMPTS_MESSAGE.getMessage());
-        String moveAttempts = readLine();
-        validator.validateNumber(moveAttempts);
+        int moveAttempts = validateNumber(readLine());
+        close();
         newLine();
-        return Integer.parseInt(moveAttempts);
+        return moveAttempts;
+    }
+
+    private int validateNumber(String requestMoveAttempts) {
+        validator.validateNumber(requestMoveAttempts);
+        int moveAttempts = Integer.parseInt(requestMoveAttempts);
+        validator.validateNumber(moveAttempts);
+        return moveAttempts;
     }
 
     private void newLine() {
