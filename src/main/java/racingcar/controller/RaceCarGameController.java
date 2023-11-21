@@ -1,28 +1,31 @@
 package racingcar.controller;
 
-import racingcar.controller.dto.AllCarsMoveResultsDto;
 import racingcar.controller.dto.SingleMoveResultDto;
+import racingcar.controller.dto.WinningCarNameDto;
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.util.RaceCarsFactory;
-import racingcar.view.input.RaceGameInputView;
+import racingcar.view.input.ConsoleRaceGameInput;
 import racingcar.view.output.RaceGameOutputView;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class RaceCarGameController {
 
-    private final RaceGameInputView inputView;
+    private final ConsoleRaceGameInput inputView;
     private final RaceGameOutputView outputView;
 
-    public RaceCarGameController(RaceGameInputView inputView, RaceGameOutputView outputView) {
+    public RaceCarGameController(ConsoleRaceGameInput inputView, RaceGameOutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
     public void run() {
         Cars cars = getCars();
-        displayCarsMoveResult(cars, getMoveAttempts());
+        int moveAttempts = getMoveAttempts();
+        displayResultMessage();
+        displayCarsMoveResult(cars, moveAttempts);
+        displayWinningCars(cars);
     }
 
     private Cars getCars() {
@@ -34,22 +37,34 @@ public class RaceCarGameController {
         return inputView.requestMoveAttempts();
     }
 
+    private void displayResultMessage() {
+        outputView.displayResultMessage();
+    }
+
     private void displayCarsMoveResult(Cars cars, int moveAttempts) {
-        List<AllCarsMoveResultsDto> allMoveResult = getAllMoveResult(cars, moveAttempts);
-        outputView.displayCarsMoveResult(allMoveResult);
+        for (int iteration = 0; iteration < moveAttempts; iteration++) {
+            outputView.displayCarsMoveResult(getSingleCarsMoveResult(cars));
+        }
     }
 
-    private List<AllCarsMoveResultsDto> getAllMoveResult(final Cars cars, final int moveAttempts) {
-        return IntStream.range(0, moveAttempts)
-                .mapToObj(i -> new AllCarsMoveResultsDto(getSingleMoveResult(cars)))
-                .toList();
-    }
-
-    private List<SingleMoveResultDto> getSingleMoveResult(final Cars cars) {
+    private List<SingleMoveResultDto> getSingleCarsMoveResult(final Cars cars) {
         cars.instructAllCarsToMove();
 
         return cars.getCars().stream()
                 .map(SingleMoveResultDto::from)
+                .toList();
+    }
+
+    private void displayWinningCars(Cars cars) {
+        List<WinningCarNameDto> winningCarsName = getWinningCarsName(cars);
+        outputView.displayWinningCars(winningCarsName);
+    }
+
+    private List<WinningCarNameDto> getWinningCarsName(final Cars cars) {
+        List<Car> winningCars = cars.getWinningCars();
+
+        return winningCars.stream()
+                .map(WinningCarNameDto::from)
                 .toList();
     }
 

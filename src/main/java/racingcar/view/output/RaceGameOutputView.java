@@ -1,34 +1,54 @@
 package racingcar.view.output;
 
-import racingcar.controller.dto.AllCarsMoveResultsDto;
 import racingcar.controller.dto.SingleMoveResultDto;
+import racingcar.controller.dto.WinningCarNameDto;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static racingcar.view.output.OutputResultMessage.CAR_MOVE_RESULT_FORMAT;
+import static racingcar.view.output.OutputResultMessage.WINNING_CAR_NAME_FORMAT;
 
 public class RaceGameOutputView {
 
     private static final String CAR_MOVE_SYMBOL = "-";
+    private static final String RESULT_MESSAGE = "실행 결과";
 
-    public void displayCarsMoveResult(List<AllCarsMoveResultsDto> allMoveResult) {
+    public void displayResultMessage() {
+        System.out.println(RESULT_MESSAGE);
+    }
+
+    public void displayCarsMoveResult(List<SingleMoveResultDto> moveResults) {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < allMoveResult.size(); i++) {
-            AllCarsMoveResultsDto allCarsMoveResultsDto = allMoveResult.get(i);
-            List<SingleMoveResultDto> carResults = allCarsMoveResultsDto.getCarResults();
+        moveResults.stream()
+                .map(this::getResultMessage)
+                .forEach(sb::append);
 
-            for (int j = 0; j < carResults.size(); j++) {
-                SingleMoveResultDto singleMoveResultDto = carResults.get(j);
-                String carName = singleMoveResultDto.getCarName();
-                int moveCount = singleMoveResultDto.getMoveCount();
-                String s = generateDashString(moveCount);
+        System.out.println(sb);
+    }
 
-            }
-        }
+    private String getResultMessage(SingleMoveResultDto moveResult) {
+        String carName = moveResult.getCarName();
+        String moveSymbol = generateDashString(moveResult.getMoveCount());
 
+        return String.format(CAR_MOVE_RESULT_FORMAT.getMessageFormat(), carName, moveSymbol);
     }
 
     private String generateDashString(int moveCount) {
         return CAR_MOVE_SYMBOL.repeat(moveCount);
+    }
+
+    public void displayWinningCars(List<WinningCarNameDto> winningCarNames) {
+        System.out.println(getWinningCarNamesFormat(winningCarNames));
+    }
+
+    private String getWinningCarNamesFormat(List<WinningCarNameDto> winningCarsName) {
+        String joinCarsName = winningCarsName.stream()
+                .map(WinningCarNameDto::getName)
+                .collect(Collectors.joining(", "));
+
+        return String.format(WINNING_CAR_NAME_FORMAT.getMessageFormat(), joinCarsName);
     }
 
 

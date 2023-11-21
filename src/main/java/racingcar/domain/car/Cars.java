@@ -20,7 +20,7 @@ public class Cars {
                 .distinct()
                 .toList();
 
-        if (cars.size() == uniqueCars.size()) {
+        if (cars.size() != uniqueCars.size()) {
             throw new IllegalArgumentException(DUPLICATE_CAR_NAME_ERROR.getMessage());
         }
     }
