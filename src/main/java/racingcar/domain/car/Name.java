@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import static racingcar.domain.exception.ErrorMessage.NAME_LENGTH_ERROR;
 
@@ -15,4 +15,5 @@ public class Name {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR.getMessage());
         }
     }
+    
 }
