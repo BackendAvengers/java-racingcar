@@ -13,16 +13,10 @@
 - [X] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
   - [X] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다. 
 
-## 출력
+## 출력 - 5 시간안에 해결 X
 - 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 
 ## 입력
-- 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-- ,를 기준으로 자동차의 이름들을 입력받을 수 있다.
-- 자동차를 몇 번 이동시킬 것인지 입력할 수 있다.
-
-JDK에서 제공하는 Random 및 Scanner API 대신 camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
-Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
-사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
-
-Randoms.pickNumberInRange(0,9);
+- [X] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
+- [X] ,를 기준으로 자동차의 이름들을 입력받을 수 있다.
+- [X] 자동차를 몇 번 이동시킬 것인지 입력할 수 있다.
