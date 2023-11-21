@@ -1,11 +1,8 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
-import racingcar.util.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.domain.exception.ErrorMessage.NOT_FOUND_CAR_ERROR;
+import static racingcar.domain.car.exception.ErrorMessage.NOT_FOUND_CAR_ERROR;
 
 public class Cars {
 
@@ -15,12 +12,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void instructAllCarsToMove() {
-        cars.forEach(this::instructCarToMove);
-    }
-
-    private void instructCarToMove(Car car) {
-        car.moveForwardOrHalt(Randoms.count());
+    public void instructAllCarsToMove(int movesToPerform) {
+        for (int initialCount = 0; initialCount < movesToPerform; initialCount++){
+            cars.forEach(Car::moveForwardOrHalt);
+        }
     }
 
     public List<Car> getWinningCars() {

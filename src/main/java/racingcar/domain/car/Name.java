@@ -1,6 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
-import static racingcar.domain.exception.ErrorMessage.NAME_LENGTH_ERROR;
+import static racingcar.domain.car.exception.ErrorMessage.NAME_LENGTH_ERROR;
 
 public class Name {
     private final String name;

@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.car;
+
+import racingcar.util.Randoms;
 
 public enum MoveSupport {
 
@@ -10,7 +12,7 @@ public enum MoveSupport {
         this.threshold = threshold;
     }
 
-    public static boolean isMoveAllowed(int controlValue) {
-        return controlValue >= MOVE_THRESHOLD.threshold;
+    public static boolean isMoveAllowed() {
+        return Randoms.getNumber() >= MOVE_THRESHOLD.threshold;
     }
 }

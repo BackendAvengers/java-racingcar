@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 public class Car implements Comparable<Car> {
 
@@ -10,8 +10,8 @@ public class Car implements Comparable<Car> {
         this.moveCounter = new MoveCounter();
     }
 
-    public void moveForwardOrHalt(int controlValue) {
-        if (MoveSupport.isMoveAllowed(controlValue)) {
+    public void moveForwardOrHalt() {
+        if (MoveSupport.isMoveAllowed()) {
             moveCounter.incrementMoveCount();
         }
     }

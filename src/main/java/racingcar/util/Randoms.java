@@ -8,7 +8,7 @@ public class Randoms {
     private Randoms() {
     }
 
-    public static int count() {
+    public static int getNumber() {
         return camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
     }
 }
