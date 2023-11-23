@@ -8,15 +8,9 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Cars;
 import racingcar.domain.game.RacingCarGame;
 import racingcar.domain.round.Round;
-import racingcar.io.ConsoleReader;
-import racingcar.io.ConsoleWriter;
-import racingcar.view.RacingCarView;
 
 class RacingCarGameControllerTest {
-    ConsoleReader consoleReader = new ConsoleReader();
-    ConsoleWriter consoleWriter = new ConsoleWriter();
-    RacingCarView racingCarView = new RacingCarView(consoleReader, consoleWriter);
-    RacingCarGameController controller = new RacingCarGameController(racingCarView);
+    private final RacingCarGameController controller = new RacingCarGameController();
 
     @Test
     void 경주할_자동차들과_라운드를_기반으로_새로운_자동차경주게임을_만든다() {

@@ -16,13 +16,9 @@ import racingcar.util.Parser;
 import racingcar.view.RacingCarView;
 
 public class RacingCarGameController {
-    private final RacingCarView racingCarView;
+    private final RacingCarView racingCarView = new RacingCarView();
     private final MoveStrategy moveStrategy = new RandomBasedMoveStrategy();
     private final RacingCarFactory racingCarFactory = new RacingCarFactory(moveStrategy);
-
-    public RacingCarGameController(RacingCarView racingCarView) {
-        this.racingCarView = racingCarView;
-    }
 
     public void run() {
         Cars cars = getCars();

@@ -12,13 +12,8 @@ import racingcar.view.constants.Message;
 public class RacingCarView {
     private static final String LINE_SEPARATOR = System.lineSeparator();
 
-    private final ConsoleReader consoleReader;
-    private final ConsoleWriter consoleWriter;
-
-    public RacingCarView(ConsoleReader consoleReader, ConsoleWriter consoleWriter) {
-        this.consoleReader = consoleReader;
-        this.consoleWriter = consoleWriter;
-    }
+    private final ConsoleReader consoleReader = new ConsoleReader();
+    private final ConsoleWriter consoleWriter = new ConsoleWriter();
 
     private String input(String message){
         consoleWriter.println(message);
@@ -59,7 +54,8 @@ public class RacingCarView {
 
     public void outputFinalWinner(FinalWinnerDto finalWinnerDto){
         List<String> winnerNames = finalWinnerDto.winnerNames();
-        String message = String.join(", ", winnerNames);
+        String winnerNamesMessage = String.join(", ", winnerNames);
+        String message = String.format(Message.FINAL_WINNER.getValue(), winnerNamesMessage);
         consoleWriter.println(message);
     }
 }
