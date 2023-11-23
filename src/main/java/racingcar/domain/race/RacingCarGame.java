@@ -13,6 +13,15 @@ public class RacingCarGame {
         this.round = round;
     }
 
+    public void proceedRound() {
+        racingCars.forEach(RacingCar::moveForwardOrStop);
+        round.next();
+    }
+
+    public boolean isFinished() {
+        return !round.hasNext();
+    }
+
     public List<RacingCar> getRacingCars() {
         return Collections.unmodifiableList(racingCars);
     }
