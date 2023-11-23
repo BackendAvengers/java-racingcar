@@ -1,6 +1,5 @@
 package stub;
 
-import org.mockito.Mock;
 import racingcar.domain.move.MoveStrategy;
 
 public class StubMoveStrategy implements MoveStrategy {
