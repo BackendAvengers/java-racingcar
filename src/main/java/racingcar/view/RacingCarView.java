@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.RacingCarStatus;
+import racingcar.domain.race.RacingCarStatus;
 import racingcar.dto.FinalWinnerDto;
 import racingcar.dto.RoundResultDto;
 import racingcar.io.ConsoleReader;

@@ -2,7 +2,7 @@ package racingcar.dto;
 
 import java.util.Collections;
 import java.util.List;
-import racingcar.domain.RacingCarStatus;
+import racingcar.domain.race.RacingCarStatus;
 
 public record RoundResultDto(List<RacingCarStatus> racingCarStatuses) {
     public RoundResultDto(List<RacingCarStatus> racingCarStatuses) {
