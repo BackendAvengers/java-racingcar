@@ -3,13 +3,14 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.domain.game.RacingCarGame;
 import racingcar.domain.move.MoveStrategy;
 import racingcar.domain.move.RandomBasedMoveStrategy;
 import racingcar.domain.race.RacingCar;
 import racingcar.domain.race.RacingCarFactory;
-import racingcar.domain.race.RacingCarGame;
 import racingcar.domain.race.RacingCarStatus;
 import racingcar.domain.round.Round;
+import racingcar.dto.FinalWinnerDto;
 import racingcar.dto.RoundResultDto;
 import racingcar.util.Parser;
 import racingcar.view.RacingCarView;
@@ -29,6 +30,8 @@ public class RacingCarGameController {
         RacingCarGame racingCarGame = createGame(cars, totalRound);
 
         playGame(racingCarGame);
+
+        showFinalWinner(racingCarGame);
     }
 
     private Cars getCars() {
@@ -66,5 +69,14 @@ public class RacingCarGameController {
                     .toList();
             racingCarView.outputRoundResult(new RoundResultDto(racingCarStatuses));
         }
+    }
+
+    public void showFinalWinner(RacingCarGame racingCarGame) {
+        List<Car> finalWinners = racingCarGame.findFinalWinner();
+        List<String> finalWinnerNames = finalWinners.stream()
+                .map(Car::getName)
+                .toList();
+        FinalWinnerDto finalWinnerDto = new FinalWinnerDto(finalWinnerNames);
+        racingCarView.outputFinalWinner(finalWinnerDto);
     }
 }

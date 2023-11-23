@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Cars;
-import racingcar.domain.race.RacingCarGame;
+import racingcar.domain.game.RacingCarGame;
 import racingcar.domain.round.Round;
 import racingcar.io.ConsoleReader;
 import racingcar.io.ConsoleWriter;

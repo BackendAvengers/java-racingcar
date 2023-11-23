@@ -20,6 +20,10 @@ public class RacingCar {
         }
     }
 
+    public Car getCar() {
+        return car;
+    }
+
     public String getName() {
         return car.getName();
     }

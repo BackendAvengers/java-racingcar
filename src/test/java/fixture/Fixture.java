@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.domain.game.RacingCarGame;
 import racingcar.domain.race.RacingCar;
-import racingcar.domain.race.RacingCarGame;
 import racingcar.domain.race.RacingPosition;
 import racingcar.domain.round.Round;
 import stub.StubMoveStrategy;
@@ -40,6 +40,11 @@ public class Fixture {
     public static RacingCar createRacingCar(Car car) {
         StubMoveStrategy stubMoveStrategy = new StubMoveStrategy();
         return new RacingCar(car, new RacingPosition(0), stubMoveStrategy);
+    }
+
+    public static RacingCar createRacingCar(Car car, int position) {
+        StubMoveStrategy stubMoveStrategy = new StubMoveStrategy();
+        return new RacingCar(car, new RacingPosition(position), stubMoveStrategy);
     }
 
     public static Cars createCars(int size) {
