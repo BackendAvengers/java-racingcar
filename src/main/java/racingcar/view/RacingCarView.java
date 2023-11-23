@@ -21,4 +21,8 @@ public class RacingCarView {
     public String inputRacingCarNames(){
         return input(Message.INPUT_RACING_CAR_NAMES.getValue());
     }
+
+    public String inputTotalRound(){
+        return input(Message.INPUT_TOTAL_ROUND.getValue());
+    }
 }
