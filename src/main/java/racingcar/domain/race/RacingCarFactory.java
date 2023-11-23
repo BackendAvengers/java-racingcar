@@ -11,7 +11,7 @@ public class RacingCarFactory {
         this.moveStrategy = moveStrategy;
     }
 
-    public RacingCar createRacingCar(String name) {
-        return new RacingCar(new Car(name), new RacingPosition(INITIAL_RACING_POSITION), moveStrategy);
+    public RacingCar createRacingCar(Car car) {
+        return new RacingCar(car, new RacingPosition(INITIAL_RACING_POSITION), moveStrategy);
     }
 }

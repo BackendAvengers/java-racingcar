@@ -25,7 +25,7 @@ public class Round {
     }
 
     public void next() {
-        if (currentRound == totalRound) {
+        if (!hasNext()) {
             throw new IllegalStateException("이미 마지막 라운드입니다.");
         }
         ++currentRound;

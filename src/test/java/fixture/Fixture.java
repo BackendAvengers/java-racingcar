@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 import racingcar.domain.race.RacingCar;
 import racingcar.domain.race.RacingPosition;
+import racingcar.domain.round.Round;
 import stub.StubMoveStrategy;
 
 public class Fixture {
@@ -32,5 +34,13 @@ public class Fixture {
         StubMoveStrategy stubMoveStrategy = new StubMoveStrategy();
         stubMoveStrategy.setMoveable(isMoveable);
         return new RacingCar(createCar(name), new RacingPosition(0), stubMoveStrategy);
+    }
+
+    public static Cars createCars(int size) {
+        return new Cars(createCarList(size));
+    }
+
+    public static Round createRound(int totalRound) {
+        return new Round(totalRound, 0);
     }
 }
