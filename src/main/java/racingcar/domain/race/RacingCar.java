@@ -1,27 +1,17 @@
 package racingcar.domain.race;
 
-import static racingcar.domain.race.RacingCarConstraints.isValidCarNameLength;
-import static racingcar.exception.ErrorMessage.INVALID_CAR_NAME_LENGTH;
-
+import racingcar.domain.car.Car;
 import racingcar.domain.move.MoveStrategy;
 
 public class RacingCar {
-    private final String name;
+    private final Car car;
     private final RacingPosition racingPosition;
     private final MoveStrategy moveStrategy;
 
-    public RacingCar(String name, RacingPosition racingPosition, MoveStrategy moveStrategy) {
-        validateNameLength(name);
-
-        this.name = name;
+    public RacingCar(Car car, RacingPosition racingPosition, MoveStrategy moveStrategy) {
+        this.car = car;
         this.racingPosition = racingPosition;
         this.moveStrategy = moveStrategy;
-    }
-
-    private void validateNameLength(String name) {
-        if (!isValidCarNameLength(name)) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getValue(name.length()));
-        }
     }
 
     public void moveForwardOrStop() {
@@ -31,7 +21,7 @@ public class RacingCar {
     }
 
     public String getName() {
-        return name;
+        return car.getName();
     }
 
     public RacingPosition getRacingPosition() {

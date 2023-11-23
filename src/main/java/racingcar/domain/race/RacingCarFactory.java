@@ -1,5 +1,6 @@
 package racingcar.domain.race;
 
+import racingcar.domain.car.Car;
 import racingcar.domain.move.MoveStrategy;
 
 public class RacingCarFactory {
@@ -11,6 +12,6 @@ public class RacingCarFactory {
     }
 
     public RacingCar createRacingCar(String name) {
-        return new RacingCar(name, new RacingPosition(INITIAL_RACING_POSITION), moveStrategy);
+        return new RacingCar(new Car(name), new RacingPosition(INITIAL_RACING_POSITION), moveStrategy);
     }
 }
