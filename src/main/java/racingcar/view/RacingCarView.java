@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.RacingCarStatus;
+import racingcar.dto.FinalWinnerDto;
 import racingcar.dto.RoundResultDto;
 import racingcar.io.ConsoleReader;
 import racingcar.io.ConsoleWriter;
@@ -32,19 +33,19 @@ public class RacingCarView {
         return input(Message.INPUT_TOTAL_ROUND.getValue());
     }
 
-    private String getOutputMessage(String... messages){
+    private String formatMessagesWithNewLine(String... messages){
         return String.join(LINE_SEPARATOR, messages);
     }
 
     public void outputGameResultHeader(){
-        String message = getOutputMessage("", Message.GAME_RESULT_HEADER.getValue());
+        String message = formatMessagesWithNewLine("", Message.GAME_RESULT_HEADER.getValue());
         consoleWriter.println(message);
     }
 
     public void outputRoundResult(RoundResultDto roundResultDto){
         List<RacingCarStatus> racingCarStatuses = roundResultDto.racingCarStatuses();
         String roundResultMessage = getRoundResultMessage(racingCarStatuses);
-        String message = getOutputMessage("", roundResultMessage);
+        String message = formatMessagesWithNewLine("", roundResultMessage);
         consoleWriter.println(message);
     }
 
@@ -54,5 +55,11 @@ public class RacingCarView {
                         status.getName(),
                         Message.RACING_POSITION_CHARACTER.getValue().repeat(status.getPosition())))
                 .collect(Collectors.joining(LINE_SEPARATOR));
+    }
+
+    public void outputFinalWinner(FinalWinnerDto finalWinnerDto){
+        List<String> winnerNames = finalWinnerDto.winnerNames();
+        String message = String.join(", ", winnerNames);
+        consoleWriter.println(message);
     }
 }

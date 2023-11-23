@@ -5,7 +5,8 @@ public enum Message {
     INPUT_TOTAL_ROUND("시도할 회수는 몇회인가요?"),
     GAME_RESULT_HEADER("실행 결과"),
     ROUND_RESULT_CONTENT_FORMAT("%s : %s"),
-    RACING_POSITION_CHARACTER("-");
+    RACING_POSITION_CHARACTER("-"),
+    FINAL_WINNER("최종 우승자 : %s");
 
     private final String value;
 
