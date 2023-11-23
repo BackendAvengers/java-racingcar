@@ -1,4 +1,4 @@
-package racingcar.domain.race;
+package racingcar.domain.game;
 
 import static fixture.Fixture.createCar;
 import static fixture.Fixture.createRacingCar;
@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
-import racingcar.domain.game.RacingCarGame;
+import racingcar.domain.race.RacingCar;
 import racingcar.domain.round.Round;
 
 class RacingCarGameTest {
