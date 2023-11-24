@@ -31,11 +31,11 @@ public class Car implements Comparable<Car> {
         return moveCounter.compareTo(other.moveCounter);
     }
 
-    private String getName() {
+    public String getName() {
         return name.getName();
     }
 
-    private int getMoveCounter() {
+    public int getMoveCounter() {
         return moveCounter.getMoveCount();
     }
 
@@ -52,6 +52,7 @@ public class Car implements Comparable<Car> {
         return Objects.hash(name, moveCounter);
     }
 
+    // dto
     public static class SingleMoveResultDto {
         private final String carName;
         private final int moveCount;
