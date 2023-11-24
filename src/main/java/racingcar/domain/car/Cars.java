@@ -2,8 +2,10 @@ package racingcar.domain.car;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static racingcar.domain.car.exception.ErrorMessage.DUPLICATE_CAR_NAME_ERROR;
+import static racingcar.domain.car.exception.ErrorMessage.MOVE_VALUE_ERROR;
 import static racingcar.domain.car.exception.ErrorMessage.NOT_FOUND_CAR_ERROR;
 
 public class Cars {
@@ -25,8 +27,13 @@ public class Cars {
         }
     }
 
-    public void instructAllCarsToMove() {
-        cars.forEach(Car::moveForwardOrHalt);
+    public void instructAllCarsToMove(List<Integer> moveValues) {
+        if (cars.size() != moveValues.size()) {
+            throw new IllegalStateException(MOVE_VALUE_ERROR.getMessage());
+        }
+
+        IntStream.range(0, cars.size())
+                .forEach(i -> cars.get(i).moveForwardOrHalt(moveValues.get(i)));
     }
 
     public List<Car> getWinningCars() {

@@ -16,8 +16,8 @@ public class Car implements Comparable<Car> {
         return new Car(name);
     }
 
-    public void moveForwardOrHalt() {
-        if (MoveSupport.isMoveAllowed()) {
+    public void moveForwardOrHalt(int moveValue) {
+        if (MoveSupport.isMoveAllowed(moveValue)) {
             moveCounter.incrementMoveCount();
         }
     }

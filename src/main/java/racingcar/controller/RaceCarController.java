@@ -3,10 +3,12 @@ package racingcar.controller;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.util.RaceCarsFactory;
+import racingcar.util.Randoms;
 import racingcar.view.input.ConsoleRaceGameInput;
 import racingcar.view.output.RaceGameOutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceCarController {
 
@@ -46,11 +48,17 @@ public class RaceCarController {
     }
 
     private List<Car.SingleMoveResultDto> getSingleCarsMoveResult(final Cars cars) {
-        cars.instructAllCarsToMove();
+        cars.instructAllCarsToMove(getMoveValues(cars));
 
         return cars.getCars().stream()
                 .map(Car.SingleMoveResultDto::from)
                 .toList();
+    }
+
+    private List<Integer> getMoveValues(Cars cars) {
+        return cars.getCars().stream()
+                .map(car -> Randoms.getNumber())
+                .collect(Collectors.toList());
     }
 
     private void displayWinningCars(Cars cars) {
