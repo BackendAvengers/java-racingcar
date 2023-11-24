@@ -27,6 +27,7 @@ public class Cars {
         }
     }
 
+    // random 테스트를 컨트롤러만 해주기 위해서 자동차 개수만큼 random값을 받아서 전달합니다. (ㅜㅜ 의견 주세요)
     public void instructAllCarsToMove(List<Integer> moveValues) {
         if (cars.size() != moveValues.size()) {
             throw new IllegalStateException(MOVE_VALUE_ERROR.getMessage());

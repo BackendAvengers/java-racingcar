@@ -13,6 +13,7 @@ public class RaceGameInputView extends ConsoleRaceGameInput {
         this.validator = validator;
     }
 
+    //다음주에는 command랑 query 분리해보기
     @Override
     public List<String> requestCarNames() {
         System.out.println(RaceGameMessage.CAR_NAME_MESSAGE.getMessage());
