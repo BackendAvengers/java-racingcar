@@ -59,4 +59,12 @@ public class OutputView {
 		return MINUS_LETTER.repeat(carLocation);
 	}
 
+	public void printWinner(Cars cars) {
+		List<String> winners = cars.findWinners();
+		StringJoiner winnersMessage = new StringJoiner(WINNER_MESSAGE_DELIMITER);
+
+		winners.stream().forEach(winnersMessage::add);
+
+		printer.printLine(WINNER_MESSAGE + winnersMessage.toString());
+	}
 }
