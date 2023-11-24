@@ -5,6 +5,7 @@ import java.util.Objects;
 import static racingcar.domain.car.exception.ErrorMessage.NAME_LENGTH_ERROR;
 
 public class Name {
+    public static final int MAX_LENGTH = 5;
     private final String name;
 
     public Name(String name) {
@@ -13,7 +14,7 @@ public class Name {
     }
 
     private void validateNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_LENGTH) {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR.getMessage());
         }
     }

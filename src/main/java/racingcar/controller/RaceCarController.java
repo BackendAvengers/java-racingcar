@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import racingcar.controller.dto.SingleMoveResultDto;
-import racingcar.controller.dto.WinningCarNameDto;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.util.RaceCarsFactory;
@@ -10,12 +8,12 @@ import racingcar.view.output.RaceGameOutputView;
 
 import java.util.List;
 
-public class RaceCarGameController {
+public class RaceCarController {
 
     private final ConsoleRaceGameInput inputView;
     private final RaceGameOutputView outputView;
 
-    public RaceCarGameController(ConsoleRaceGameInput inputView, RaceGameOutputView outputView) {
+    public RaceCarController(ConsoleRaceGameInput inputView, RaceGameOutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -47,24 +45,24 @@ public class RaceCarGameController {
         }
     }
 
-    private List<SingleMoveResultDto> getSingleCarsMoveResult(final Cars cars) {
+    private List<Car.SingleMoveResultDto> getSingleCarsMoveResult(final Cars cars) {
         cars.instructAllCarsToMove();
 
         return cars.getCars().stream()
-                .map(SingleMoveResultDto::from)
+                .map(Car.SingleMoveResultDto::from)
                 .toList();
     }
 
     private void displayWinningCars(Cars cars) {
-        List<WinningCarNameDto> winningCarsName = getWinningCarsName(cars);
+        List<Car.WinningCarNameDto> winningCarsName = getWinningCarsName(cars);
         outputView.displayWinningCars(winningCarsName);
     }
 
-    private List<WinningCarNameDto> getWinningCarsName(final Cars cars) {
-        List<Car> winningCars = cars.getWinningCars();
+    private List<Car.WinningCarNameDto> getWinningCarsName(final Cars cars) {
+        final List<Car> winningCars = cars.getWinningCars();
 
         return winningCars.stream()
-                .map(WinningCarNameDto::from)
+                .map(Car.WinningCarNameDto::from)
                 .toList();
     }
 

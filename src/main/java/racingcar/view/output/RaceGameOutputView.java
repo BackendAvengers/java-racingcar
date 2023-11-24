@@ -1,7 +1,6 @@
 package racingcar.view.output;
 
-import racingcar.controller.dto.SingleMoveResultDto;
-import racingcar.controller.dto.WinningCarNameDto;
+import racingcar.domain.car.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +17,7 @@ public class RaceGameOutputView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public void displayCarsMoveResult(List<SingleMoveResultDto> moveResults) {
+    public void displayCarsMoveResult(List<Car.SingleMoveResultDto> moveResults) {
         StringBuilder sb = new StringBuilder();
 
         moveResults.stream()
@@ -28,7 +27,7 @@ public class RaceGameOutputView {
         System.out.println(sb);
     }
 
-    private String getResultMessage(SingleMoveResultDto moveResult) {
+    private String getResultMessage(Car.SingleMoveResultDto moveResult) {
         String carName = moveResult.getCarName();
         String moveSymbol = generateDashString(moveResult.getMoveCount());
 
@@ -39,13 +38,13 @@ public class RaceGameOutputView {
         return CAR_MOVE_SYMBOL.repeat(moveCount);
     }
 
-    public void displayWinningCars(List<WinningCarNameDto> winningCarNames) {
+    public void displayWinningCars(List<Car.WinningCarNameDto> winningCarNames) {
         System.out.println(getWinningCarNamesFormat(winningCarNames));
     }
 
-    private String getWinningCarNamesFormat(List<WinningCarNameDto> winningCarsName) {
+    private String getWinningCarNamesFormat(List<Car.WinningCarNameDto> winningCarsName) {
         String joinCarsName = winningCarsName.stream()
-                .map(WinningCarNameDto::getName)
+                .map(Car.WinningCarNameDto::getName)
                 .collect(Collectors.joining(", "));
 
         return String.format(WINNING_CAR_NAME_FORMAT.getMessageFormat(), joinCarsName);

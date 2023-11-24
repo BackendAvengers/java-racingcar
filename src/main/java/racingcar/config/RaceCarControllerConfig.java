@@ -1,14 +1,14 @@
 package racingcar.config;
 
-import racingcar.controller.RaceCarGameController;
+import racingcar.controller.RaceCarController;
 import racingcar.view.input.RaceGameInputView;
 import racingcar.view.input.validator.InputValidator;
 import racingcar.view.output.RaceGameOutputView;
 
 public class RaceCarControllerConfig {
 
-    public RaceCarGameController getRaceCarController() {
-        return new RaceCarGameController(getRaceGameInputView(), getRaceGameOutputView());
+    public RaceCarController getRaceCarController() {
+        return new RaceCarController(getRaceGameInputView(), getRaceGameOutputView());
     }
 
     private RaceGameInputView getRaceGameInputView() {
