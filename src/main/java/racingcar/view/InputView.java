@@ -28,11 +28,22 @@ public class InputView {
 		return carNames.split(DELIMETER);
 	}
 
+	public int inputTryNumber() {
+		printer.printLine(INPUT_TRY_NUMBER_MESSAGE);
+		String tryNumber = reader.readLine();
+
+		validateInputTryNumber(tryNumber);
+
+		return Integer.parseInt(tryNumber);
+	}
 
 	private void validateInputCarNames(String inputValue) {
 		validator.validateIsEmpty(inputValue);
 		validator.validateInputCarName(inputValue);
 	}
 
-
+	private void validateInputTryNumber(String inputValue) {
+		validator.validateIsEmpty(inputValue);
+		validator.validateTryNumber(inputValue);
+	}
 }
